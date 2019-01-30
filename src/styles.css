@@ -19,6 +19,11 @@ textarea::-moz-placeholder { color: #1b3815;}
 textarea:-ms-input-placeholder { color: #1b3815;}
 
 
+body, html {
+	height: 100%;
+	font-family: Ubuntu-Regular, sans-serif;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 

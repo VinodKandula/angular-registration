@@ -52,7 +52,11 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['/']);
        
-      } else {
+      }
+      else if (data.statusCode == 400) {
+        this.error='Email Address is not confirmed . Confirm your email to login.'
+      }
+      else {
         this.error='UserName and Password is wrong'
       }
       this.loading =false;
