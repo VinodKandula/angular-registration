@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
-import { APIService } from '../../API.service';
+import { APIService, GetItemQuery } from '../../API.service';
 
 @Component({
   selector: 'app-inventory',
@@ -14,7 +14,8 @@ export class InventoryComponent implements OnInit {
   ngOnInit() {
     if(this.auth.isLoggedIn===true){
       this.message='Welcome to inventory';
-     window.alert( this.apsync.GetItem('33ff1be5-04fc-40fb-90ed-adc327865bcd'))
+    const itemQuery=this.apsync.GetItem('33ff1be5-04fc-40fb-90ed-adc327865bcd');
+    itemQuery.then((res:GetItemQuery) => window.alert(JSON.stringify(res)));
 
     }else{
       this.message='Sorry you are not logged In';
