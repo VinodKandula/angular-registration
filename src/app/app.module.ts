@@ -15,6 +15,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import Amplify from 'aws-amplify';
+import aws_exports from '../aws-exports';
+import {AmplifyAngularModule,AmplifyService} from 'aws-amplify-angular';
+Amplify.configure(aws_exports)
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
   HttpClientModule,
   ReactiveFormsModule,
+  AmplifyAngularModule,
     RouterModule.forRoot([
       {
         path: 'inventory',
@@ -47,6 +53,10 @@ import { ReactiveFormsModule } from '@angular/forms';
         path: 'login',
         component: LoginComponent
       },
+       {
+        path: 'forgotPassword',
+        component: ForgotPwdComponent
+      },
       {
         path: '',
         component: HomeComponent,
@@ -56,7 +66,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 	  
     ])
   ],
-  providers: [AuthService],
+  providers: [AuthService,AmplifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

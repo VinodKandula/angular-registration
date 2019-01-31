@@ -6,12 +6,14 @@ import { User } from '../../types/user';
   templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
-
+ 
+  public isLoading:boolean = false;
+  
   constructor(private auth: AuthService) { }
   users= new User;
   message="Profile Details";
   ngOnInit() {
-
+    this.isLoading=true;//show loading text
     if (this.auth.isLoggedIn === true) {
       this.auth.getUser().pipe().subscribe((resp) => {
         if (resp && resp.body && resp.body.msg) {
@@ -34,10 +36,14 @@ export class ProfileComponent implements OnInit {
           console.log('error');
 
         }
+        this.isLoading=false;
       })
     }else{
       this.message='Sorry you are not logged In';
+      this.isLoading=false;
     }
+  
+
   }
 
 }
