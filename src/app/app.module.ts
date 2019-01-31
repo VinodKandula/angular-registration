@@ -47,6 +47,10 @@ import { ReactiveFormsModule } from '@angular/forms';
         path: 'login',
         component: LoginComponent
       },
+       {
+        path: 'forgotPassword',
+        component: ForgotPwdComponent
+      },
       {
         path: '',
         component: HomeComponent,
